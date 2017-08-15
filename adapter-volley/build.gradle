@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion CONFIG.versions.android.sdk.compile
+    buildToolsVersion CONFIG.versions.android.tools
+
+    defaultConfig {
+        minSdkVersion CONFIG.versions.android.sdk.min
+        targetSdkVersion CONFIG.versions.android.sdk.target
+        versionCode Integer.parseInt(MODULE_VERSION_CODE)
+        versionName project.MODULE_VERSION
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.toVersion(CONFIG.versions.java)
+        targetCompatibility JavaVersion.toVersion(CONFIG.versions.java)
+    }
+}
+
+dependencies {
+    compile project(':interface')
+    compile "com.android.volley:volley:${CONFIG.versions.android.libraries.volley}"
+}

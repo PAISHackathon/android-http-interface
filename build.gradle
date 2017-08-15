@@ -1,0 +1,17 @@
+buildscript {
+    apply from: "config/index.gradle"
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:${CONFIG.versions.android.plugin}"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
