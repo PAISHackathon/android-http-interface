@@ -12,8 +12,8 @@ import java.util.Map;
 @SuppressWarnings("unused")
 public interface Http {
     interface Callback {
-        void onFailure(@NonNull Call call, IOException e);
         void onResponse(@NonNull Call call, @NonNull Response response) throws IOException;
+        void onFailure(@NonNull Call call, IOException e);
     }
 
     interface Request {
