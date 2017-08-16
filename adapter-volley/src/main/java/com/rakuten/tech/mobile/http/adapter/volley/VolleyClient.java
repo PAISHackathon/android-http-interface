@@ -6,6 +6,7 @@ import com.android.volley.RequestQueue;
 import com.rakuten.tech.mobile.http.Http;
 
 
+@SuppressWarnings("unused")
 public class VolleyClient implements Http.Client {
     private RequestQueue queue;
 

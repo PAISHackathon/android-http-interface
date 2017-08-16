@@ -35,7 +35,7 @@ class VolleyCall implements Http.Call {
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
-            throw new IOException("IO Interruped", e);
+            throw new IOException("IO Interrupted", e);
         }
     }
 
@@ -55,7 +55,9 @@ class VolleyCall implements Http.Call {
         @Override public void onResponse(Http.Response response) {
             try {
                 callback.onResponse(call, response);
-            } catch (IOException ignored) {}
+            } catch (IOException e) {
+                callback.onFailure(call, e);
+            }
         }
     }
 
@@ -66,17 +68,20 @@ class VolleyCall implements Http.Call {
         volleyQueue.add(volleyRequest);
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     @Override public void cancel() {
+        final VolleyRequest request = this.volleyRequest;
         volleyQueue.cancelAll(new RequestQueue.RequestFilter() {
-            @Override public boolean apply(Request<?> request) {
+            @Override public boolean apply(Request<?> candidate) {
                 // == is intentional to cancel only the request represented by that object
-                return request == volleyRequest;
+                return request == candidate;
             }
         });
         cancelled = true;
     }
 
     @Override public boolean isCanceled() {
-        return cancelled; // relying on volley's cancel contract https://developer.android.com/training/volley/simple.html#cancel
+        // relying on volley's cancel contract https://developer.android.com/training/volley/simple.html#cancel
+        return cancelled;
     }
 }

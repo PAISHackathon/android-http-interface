@@ -9,6 +9,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.rakuten.tech.mobile.http.Http;
 
+import java.util.Map;
+
 
 class VolleyRequest extends Request<Http.Response> {
 
@@ -37,16 +39,28 @@ class VolleyRequest extends Request<Http.Response> {
         if (successListener != null) successListener.onResponse(response);
     }
 
+    @Override public byte[] getBody() {
+        return request.body();
+    }
+
+    @Override public Map<String, String> getHeaders() {
+        return request.headers();
+    }
+
+    @Override public String getBodyContentType() {
+        return request.contentType();
+    }
+
     private static int convertMethod(@NonNull String method) {
         switch (method.toLowerCase()) {
             case "get": return Method.GET;
-            case "post": return Method.GET;
-            case "put": return Method.GET;
-            case "delete": return Method.GET;
-            case "head": return Method.GET;
-            case "options": return Method.GET;
-            case "trace": return Method.GET;
-            case "patch": return Method.GET;
+            case "post": return Method.POST;
+            case "put": return Method.PUT;
+            case "delete": return Method.DELETE;
+            case "head": return Method.HEAD;
+            case "options": return Method.OPTIONS;
+            case "trace": return Method.TRACE;
+            case "patch": return Method.PATCH;
             default: return Method.DEPRECATED_GET_OR_POST;
         }
     }
