@@ -3,9 +3,11 @@ buildscript {
 
     repositories {
         jcenter()
+        artifactoryRelease()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${CONFIG.versions.android.plugin}"
+        classpath 'jp.co.rakuten.sdtd.plugin:artifactory:1.2.0'
     }
 }
 
