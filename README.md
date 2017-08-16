@@ -21,6 +21,7 @@ public class EngineClient {
 // usage
 
 EngineClient client = // ..
+// ↓ exposing & forcing volley ↓
 RequestQueue queue = // ...
 RequestFuture<TokenResult> future = RequestFuture.newFuture();
 client.token(param, future, future)
@@ -67,9 +68,10 @@ public class EngineClient {
 
 RequestQueue queue = // ...
 EngineClient client = new EngineClient(new VolleyClient(queue)); // using volley adapter
-
-Call<TokenResult> call = client.token(param);
-TokenResult result = call.execute();
+// ↓ exposing HTTP abstraction layer  ↓
+Http.Call call = client.token(param); 
+Http.Response response = call.execute();
+TokenResult result = TokenResult.fromJson(response.string());
 ```
 
 ```java
