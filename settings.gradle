@@ -1,2 +1,3 @@
 include ':interface'
 include ':adapter-volley', ':adapter-okhttp'
+include ':interop'

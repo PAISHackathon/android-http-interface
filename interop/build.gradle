@@ -19,9 +19,11 @@ android {
 
 dependencies {
     compile project(':interface')
-    provided "com.android.volley:volley:${CONFIG.versions.android.libraries.volley}"
-
-    testCompile project(':interop')
+    compile "com.android.support:support-annotations:${CONFIG.versions.android.libraries.support}"
+    compile 'junit:junit:4.12'
+    compile('org.robolectric:robolectric:3.4') {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
+    compile 'org.assertj:assertj-core:3.8.0'
+    compile 'org.skyscreamer:jsonassert:1.5.0'
 }
-
-apply from: "../artifactory.gradle"
