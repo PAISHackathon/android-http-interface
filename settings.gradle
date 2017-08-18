@@ -1,1 +1,2 @@
-include ':interface', ':adapter-volley', ':adapter-okhttp'
+include ':interface'
+include ':adapter-volley', ':adapter-okhttp'

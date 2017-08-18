@@ -40,29 +40,33 @@ class VolleyCall implements Http.Call {
     }
 
     private static class VolleyCallback implements Response.Listener<Http.Response>, Response.ErrorListener {
-        private final Http.Callback callback;
+        private final Http.ResponseCallback responseCallback;
+        private final Http.FailureCallback failureCallback;
         private final Http.Call call;
 
-        VolleyCallback(@NonNull Http.Call call, @NonNull Http.Callback callback) {
-            this.callback = callback;
+
+        VolleyCallback(@NonNull Http.Call call, Http.ResponseCallback responseCallback, Http.FailureCallback failureCallback) {
             this.call = call;
+            this.responseCallback = responseCallback;
+            this.failureCallback = failureCallback;
         }
 
         @Override public void onErrorResponse(VolleyError error) {
-            callback.onFailure(call, new IOException("Volley error", error));
+            if(failureCallback != null) {
+                failureCallback.onFailure(call, new IOException("Volley error", error));
+            }
         }
 
         @Override public void onResponse(Http.Response response) {
-            try {
-                callback.onResponse(call, response);
-            } catch (IOException e) {
-                callback.onFailure(call, e);
+            if(responseCallback != null) {
+                responseCallback.onResponse(call, response);
             }
         }
     }
 
-    @Override public void enqueue(@NonNull Http.Callback responseCallback) {
-        VolleyCallback volleyCallback = new VolleyCallback(this, responseCallback);
+    @Override
+    public void enqueue(Http.ResponseCallback responseCallback, Http.FailureCallback failureCallback) {
+        VolleyCallback volleyCallback = new VolleyCallback(this, responseCallback, failureCallback);
         volleyRequest.errorListener = volleyCallback;
         volleyRequest.successListener = volleyCallback;
         volleyQueue.add(volleyRequest);

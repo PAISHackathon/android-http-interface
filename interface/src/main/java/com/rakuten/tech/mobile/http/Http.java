@@ -11,8 +11,11 @@ import java.util.Map;
  */
 @SuppressWarnings("unused")
 public interface Http {
-    interface Callback {
-        void onResponse(@NonNull Call call, @NonNull Response response) throws IOException;
+    interface ResponseCallback {
+        void onResponse(@NonNull Call call, @NonNull Response response);
+    }
+
+    interface FailureCallback {
         void onFailure(@NonNull Call call, IOException e);
     }
 
@@ -25,7 +28,8 @@ public interface Http {
     }
 
     interface Response {
-        byte[] bytes();
+        @NonNull byte[] bytes();
+        int code();
         @NonNull String contentType();
         @NonNull String string();
         @NonNull Map<String, String> headers();
@@ -38,7 +42,7 @@ public interface Http {
     interface Call {
         @NonNull Request request();
         @NonNull Response execute() throws IOException;
-        void enqueue(@NonNull Callback responseCallback);
+        void enqueue(ResponseCallback responseCallback, FailureCallback failureCallback);
         void cancel();
         boolean isCanceled();
     }
