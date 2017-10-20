@@ -1,13 +1,17 @@
 buildscript {
     apply from: "config/index.gradle"
 
+    CONFIG.versions.android.plugin = '3.0.0-rc2'
+    CONFIG.versions.android.tools = '26.0.2'
+    CONFIG.versions.java = '1.8'
     repositories {
+        google()
         jcenter()
         artifactoryRelease()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${CONFIG.versions.android.plugin}"
-        classpath 'jp.co.rakuten.sdtd.plugin:artifactory:1.2.0'
+        classpath 'jp.co.rakuten.sdtd.plugin:artifactory:1.3.0'
     }
 }
 

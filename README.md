@@ -101,6 +101,8 @@ Tracker tracker = RATTracker.initialize(context, new VolleyClient(queue)); // us
     - OkHttp3 ❌
 * Interop Test Suite 
     - needs love
+* Tidiness
+    - use [shared buildconfig](https://github.com/rakutentech/android-buildconfig)
 * OSS: 
-    - cleanup code
+    - cleanup code: artifactory
     - probably MIT

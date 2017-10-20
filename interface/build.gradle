@@ -18,7 +18,7 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:support-annotations:${CONFIG.versions.android.libraries.support}"
+    compileOnly "com.android.support:support-annotations:${CONFIG.versions.android.libraries.support}"
 }
 
 apply from: "../artifactory.gradle"

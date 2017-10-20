@@ -18,8 +18,8 @@ android {
 }
 
 dependencies {
-    compile project(':interface')
-    compile "com.android.support:support-annotations:${CONFIG.versions.android.libraries.support}"
+    api project(':interface')
+    implementation "com.android.support:support-annotations:${CONFIG.versions.android.libraries.support}"
 }
 
 apply from: "../artifactory.gradle"

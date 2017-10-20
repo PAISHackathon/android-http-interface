@@ -18,10 +18,11 @@ android {
 }
 
 dependencies {
-    compile project(':interface')
-    provided "com.android.volley:volley:${CONFIG.versions.android.libraries.volley}"
+    api project(':interface')
+    compileOnly "com.android.volley:volley:${CONFIG.versions.android.libraries.volley}"
 
-    testCompile project(':interop')
+    testImplementation "com.android.volley:volley:${CONFIG.versions.android.libraries.volley}"
+    testImplementation project(':interop')
 }
 
 apply from: "../artifactory.gradle"
