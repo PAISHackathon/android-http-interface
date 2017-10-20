@@ -100,9 +100,4 @@ Tracker tracker = Tracker.initialize(context, new VolleyClient(queue)); // using
     - OkHttp2 ❌
     - OkHttp3 ❌
 * Interop Test Suite 
-    - needs love
-* Tidiness
-    - use [shared buildconfig](https://github.com/rakutentech/android-buildconfig)
-* OSS: 
-    - cleanup code: artifactory
-    - probably MIT
+    - needs some more tests
