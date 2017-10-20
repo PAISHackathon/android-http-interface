@@ -20,5 +20,3 @@ android {
 dependencies {
     compile project(':interface')
 }
-
-apply from: '../artifactory.gradle'

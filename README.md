@@ -31,9 +31,9 @@ TokenResult result = future.get(10, TimeUnit.SECONDS);
 ```
 
 ```java
-public class RATTracker {
+public class Tracker {
     // the queue is a com.android.volley.RequestQueue
-    public static RATTracker initialize(Context context, RequestQueue queue) {
+    public static Tracker initialize(Context context, RequestQueue queue) {
         // ...
     }
 }
@@ -42,7 +42,7 @@ public class RATTracker {
 
 Context context = // ..
 RequestQueue queue = // ...
-Tracker tracker = RATTracker.initialize(context, queue);
+Tracker tracker = Tracker.initialize(context, queue);
 ```
 
 ## How?
@@ -75,9 +75,9 @@ TokenResult result = TokenResult.fromJson(response.string());
 ```
 
 ```java
-public class RATTracker {
+public class Tracker {
     // no more volley specific code in SDK public interface 🤗
-    public static RATTracker initialize(Context context, Http.Client client) {
+    public static Tracker initialize(Context context, Http.Client client) {
         // ...
     }
 }
@@ -86,7 +86,7 @@ public class RATTracker {
 
 Context context = // ..
 RequestQueue queue = // ...
-Tracker tracker = RATTracker.initialize(context, new VolleyClient(queue)); // using volley adapter
+Tracker tracker = Tracker.initialize(context, new VolleyClient(queue)); // using volley adapter
 ```
 
 ## Current State

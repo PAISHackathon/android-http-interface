@@ -24,5 +24,3 @@ dependencies {
 
     testImplementation project(':interop')
 }
-
-apply from: "../artifactory.gradle"
