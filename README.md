@@ -88,16 +88,3 @@ Context context = // ..
 RequestQueue queue = // ...
 Tracker tracker = Tracker.initialize(context, new VolleyClient(queue)); // using volley adapter
 ```
-
-## Current State
-
-* Java Interface: 
-    - close to final, mainly threading up for discussion
-    - Needs some documentation love
-* Adapters
-    - Volley ✅
-    - HttpUrlConnection ✅
-    - OkHttp2 ❌
-    - OkHttp3 ❌
-* Interop Test Suite 
-    - needs some more tests
