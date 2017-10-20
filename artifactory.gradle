@@ -1,18 +1,18 @@
 apply plugin: 'jp.co.rakuten.sdtd.artifactory'
 artifactory {
-    group = project.MODULE_GROUP
-    artifact = project.MODULE_NAME
-    version = project.MODULE_VERSION
-    description = project.MODULE_DESCRIPTION
-    sourceUrl = project.MODULE_REPOSITORY
+    group = project.group
+    artifact = project.name
+    version = project.version
+    description = project.description
+    sourceUrl = project.repository
 }
 
 task('printArtifactoryConfig') {
     doLast {
-        println project.MODULE_GROUP + "\n" +
-                project.MODULE_NAME + "\n" +
-                project.MODULE_VERSION + "\n" +
-                project.MODULE_DESCRIPTION + "\n" +
-                project.MODULE_REPOSITORY
+        println project.group + "\n" +
+                project.name + "\n" +
+                project.version + "\n" +
+                project.description + "\n" +
+                project.repository
     }
 }

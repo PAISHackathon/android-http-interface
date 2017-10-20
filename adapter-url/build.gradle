@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion CONFIG.versions.android.sdk.min
         targetSdkVersion CONFIG.versions.android.sdk.target
-        versionCode Integer.parseInt(MODULE_VERSION_CODE)
-        versionName project.MODULE_VERSION
+        versionCode Integer.parseInt(project.version_code)
+        versionName project.version
     }
 
     compileOptions {

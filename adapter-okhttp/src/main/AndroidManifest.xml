@@ -1,6 +1,2 @@
-<manifest package="com.rakuten.tech.mobile.http.adapter.okhttp"
-
-          xmlns:android="http://schemas.android.com/apk/res/android"
->
-
+<manifest package="com.rakuten.tech.mobile.http.adapter.okhttp">
 </manifest>

@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion CONFIG.versions.android.sdk.min
         targetSdkVersion CONFIG.versions.android.sdk.target
-        versionCode Integer.parseInt(MODULE_VERSION_CODE)
-        versionName project.MODULE_VERSION
+        versionCode Integer.parseInt(version_code)
+        versionName project.version
     }
 
     compileOptions {
@@ -20,3 +20,5 @@ android {
 dependencies {
     compile project(':interface')
 }
+
+apply from: '../artifactory.gradle'
