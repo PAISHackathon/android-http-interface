@@ -20,3 +20,5 @@ android {
 dependencies {
     api project(':interface')
 }
+
+apply from: '../config/checkstyle/android.gradle'

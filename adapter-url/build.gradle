@@ -24,3 +24,5 @@ dependencies {
 
     testImplementation project(':interop')
 }
+
+apply from: '../config/checkstyle/android.gradle'

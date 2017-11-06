@@ -25,3 +25,5 @@ dependencies {
     testImplementation "com.android.volley:volley:${CONFIG.versions.android.libraries.volley}"
     testImplementation project(':interop')
 }
+
+apply from: '../config/checkstyle/android.gradle'

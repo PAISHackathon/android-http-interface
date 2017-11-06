@@ -15,6 +15,7 @@ import com.rakuten.tech.mobile.http.interop.HttpRequestSyncSpec;
 import com.rakuten.tech.mobile.http.interop.StatusCodeSpec;
 import java.io.File;
 import java.util.concurrent.Executors;
+import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;
 
 @SuppressWarnings("unused")
@@ -26,6 +27,7 @@ class VolleyClientSpec {
   }
 
   public static class VolleyHttpRequestSyncSpec extends HttpRequestSyncSpec {
+    @Test public void dummyTest() {}
 
     @NonNull @Override protected Http.Client newClient() {
       return VolleyClientSpec.newClient();
@@ -33,6 +35,7 @@ class VolleyClientSpec {
   }
 
   public static class VolleyHttpRequestAsyncSpec extends HttpRequestAsyncSpec {
+    @Test public void dummyTest() {}
 
     @NonNull @Override protected Http.Client newClient() {
       return VolleyClientSpec.newClient();
@@ -40,6 +43,7 @@ class VolleyClientSpec {
   }
 
   public static class VolleyStatusCodeSpec extends StatusCodeSpec {
+    @Test public void dummyTest() {}
 
     public VolleyStatusCodeSpec(int statusCode, int restultStatusCode) {
       super(statusCode, restultStatusCode);

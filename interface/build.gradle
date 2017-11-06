@@ -20,3 +20,5 @@ android {
 dependencies {
     api "com.android.support:support-annotations:${CONFIG.versions.android.libraries.support}"
 }
+
+apply from: '../config/checkstyle/android.gradle'

@@ -10,6 +10,7 @@ import com.rakuten.tech.mobile.http.util.ValueRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -39,7 +40,7 @@ abstract public class HttpRequestAsyncSpec extends ClientSpec {
       fail("Failed to execute request to " + getRequest.url() + " due to " + e.getMessage());
       latch.countDown();
     });
-    latch.await();
+    latch.await(5, TimeUnit.SECONDS);
   }
 
   @Test public void shouldSucceedPostRequest()
@@ -84,7 +85,7 @@ abstract public class HttpRequestAsyncSpec extends ClientSpec {
           latch.countDown();
         }
     );
-    latch.await();
+    latch.await(5, TimeUnit.SECONDS);
   }
 
   @Test public void shouldTransformResponse()
@@ -121,6 +122,6 @@ abstract public class HttpRequestAsyncSpec extends ClientSpec {
           latch.countDown();
         }
     );
-    latch.await();
+    latch.await(5, TimeUnit.SECONDS);
   }
 }
