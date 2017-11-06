@@ -1,0 +1,45 @@
+# Java Gradle CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    working_directory: ~/code
+    docker:
+      - image: circleci/android:api-27-alpha
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+      - run: git submodule update --init
+
+      # Download and cache dependencies
+      - restore_cache:
+          key: 'deps-{{ checksum "build.gradle" }}-{{ checksum  "adapter-url/build.gradle" }}
+          -{{ checksum  "adapter-okhttp/build.gradle" }}-{{ checksum  "interface/build.gradle" }}
+          -{{ checksum  "interop/build.gradle" }}-{{ checksum  "util/build.gradle" }}'
+
+      - run: ./gradlew androidDependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: 'deps-{{ checksum "build.gradle" }}-{{ checksum  "adapter-url/build.gradle" }}
+          -{{ checksum  "adapter-okhttp/build.gradle" }}-{{ checksum  "interface/build.gradle" }}
+          -{{ checksum  "interop/build.gradle" }}-{{ checksum  "util/build.gradle" }}'
+
+      # run tests
+      - run: ./gradlew check
+      - store_artifacts:
+          path: adapter-url/build/reports
+          destination: adapter-url/reports
+      - store_artifacts:
+          path: adapter-volley/build/reports
+          destination: adapter-volley/reports
+      - store_test_results:
+          path: adapter-url/build/test-results
+      - store_test_results:
+          path: adapter-volley/build/test-results
