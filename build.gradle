@@ -1,9 +1,6 @@
 buildscript {
     apply from: "config/index.gradle"
 
-    CONFIG.versions.android.plugin = '3.0.0-rc2'
-    CONFIG.versions.android.tools = '26.0.2'
-    CONFIG.versions.java = '1.8'
     repositories {
         google()
         jcenter()
@@ -18,4 +15,9 @@ allprojects {
         google()
         jcenter()
     }
+}
+
+
+subprojects {
+    apply from: '../config/checkstyle/android.gradle'
 }
